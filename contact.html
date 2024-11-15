@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOSCO Directory</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    header {
+      background-color: #004085;
+      color: white;
+      padding: 15px 10px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .controls {
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+    }
+    .controls input, .controls select {
+      padding: 10px;
+      width: 300px;
+      max-width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .table-container {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+    }
+    table th, table td {
+      text-align: left;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+    table th {
+      background-color: #004085;
+      color: white;
+    }
+    table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    table tr:hover {
+      background-color: #e9ecef;
+    }
+    @media screen and (max-width: 600px) {
+      .controls input, .controls select {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BOSCO Directory</h1>
+  </header>
+  <div class="container">
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search by Name, Branch Code, or Email" onkeyup="filterTable()">
+      <select id="branchFilter" onchange="filterTable()">
+        <option value="">Filter by Branch</option>
+        <option value="Fujairah">Fujairah</option>
+        <option value="Dubai">Dubai</option>
+        <option value="Sharjah">Sharjah</option>
+        <option value="Abu Dhabi">Abu Dhabi</option>
+        <option value="Ras Al-Khaimah">Ras Al-Khaimah</option>
+        <option value="Ajman">Ajman</option>
+        <option value="Al Ain">Al Ain</option>
+      </select>
+      <select id="positionFilter" onchange="filterTable()">
+        <option value="">Filter by Position</option>
+        <option value="Manager">Manager</option>
+        <option value="Sales">Sales</option>
+      </select>
+    </div>
+    <div class="table-container">
+      <table id="directoryTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Branch</th>
+            <th>Branch Code</th>
+            <th>Position</th>
+            <th>Office No</th>
+            <th>Mobile No</th>
+            <th>Email Address</th>
+            <th>Counter Email</th>
+          </tr>
+        </thead>
+        <tbody>
+       <tr>
+    <td>Abdul Sathar</td>
+    <td>Fujairah</td>
+    <td>BTF</td>
+    <td>Manager</td>
+    <td>+971 9 2243874</td>
+    <td>+971 55 3009091</td>
+    <td>manager.btf@boscogrp.com</td>
+    <td>btf.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Ahmed Abu-Moghli</td>
+    <td>Dubai</td>
+    <td>BTD</td>
+    <td>Manager</td>
+    <td>04-2550064</td>
+    <td>055 3009176</td>
+    <td>manager.btd@boscogrp.com</td>
+    <td>btd.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Ahmed Samir</td>
+    <td>Sharjah</td>
+    <td>BTS</td>
+    <td>Sales</td>
+    <td>+971 6 5421050</td>
+    <td>055 3009140</td>
+    <td>bts.sales3@boscogrp.com</td>
+    <td>bts.sales2@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Dinesh</td>
+    <td>Abu Dhabi</td>
+    <td>BTA</td>
+    <td>Sales</td>
+    <td>02 5575336</td>
+    <td>055 3009027</td>
+    <td>bta.sales@boscogrp.com</td>
+    <td>bta.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Faraz Ahmed Rana</td>
+    <td>Dubai</td>
+    <td>BTD</td>
+    <td>Sales</td>
+    <td>04-2550064</td>
+    <td>055 3009186</td>
+    <td>btd.sales2@boscogrp.com</td>
+    <td>btd.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Fekry Gaber</td>
+    <td>Abu Dhabi</td>
+    <td>BTA</td>
+    <td>Sales</td>
+    <td>03 7610296</td>
+    <td>055 3009120</td>
+    <td>bta.sales@boscogrp.com</td>
+    <td>bta.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Gaurav Poudwal</td>
+    <td>Ras Al-Khaimah</td>
+    <td>BTR</td>
+    <td>Sales</td>
+    <td>07-2212777</td>
+    <td>055 3009185</td>
+    <td>sales.btr@boscogrp.com</td>
+    <td>sales.btr@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Giji John</td>
+    <td>Sharjah</td>
+    <td>BTS</td>
+    <td>Manager</td>
+    <td>06-5421050</td>
+    <td>055 3009171</td>
+    <td>giji.john@boscogrp.com</td>
+    <td>bts.sales2@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Jamshed Ahmed</td>
+    <td>Abu Dhabi</td>
+    <td>BTA</td>
+    <td>Sales</td>
+    <td>03 7610296</td>
+    <td>055 3009078</td>
+    <td>bta.sales@boscogrp.com</td>
+    <td>bta.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Khaleelulla</td>
+    <td>Fujairah</td>
+    <td>BTF</td>
+    <td>Sales</td>
+    <td>+971 9 2243874</td>
+    <td>+971 55 3009033</td>
+    <td>btf.sales@boscogrp.com</td>
+    <td>btf.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Khuram Shahzad</td>
+    <td>Ras Al-Khaimah</td>
+    <td>BTR</td>
+    <td>Sales</td>
+    <td>07-221277</td>
+    <td>055 3009189</td>
+    <td>sales.btr@boscogrp.com</td>
+    <td>sales.btr@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Mathew Thomas</td>
+    <td>Ras Al-Khaimah</td>
+    <td>BTR</td>
+    <td>Sales</td>
+    <td>07-2212777</td>
+    <td>055 3009023</td>
+    <td>sales.btr@boscogrp.com</td>
+    <td>sales.btr@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Mohamed Fathi</td>
+    <td>Sharjah</td>
+    <td>BTS</td>
+    <td>Sales</td>
+    <td>06-5421050</td>
+    <td>055 3009063</td>
+    <td>sales.bts9@boscogrp.com</td>
+    <td>sakr8793@gmail.com</td>
+  </tr>
+  <tr>
+    <td>Mohammad Shatti</td>
+    <td>Abu Dhabi</td>
+    <td>BTA</td>
+    <td>Manager</td>
+    <td>(02) 557 5336</td>
+    <td>055 3009005</td>
+    <td>public.relations@boscogrp.com</td>
+    <td>bta.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Muhammed Bilal</td>
+    <td>Dubai</td>
+    <td>BTD</td>
+    <td>Sales</td>
+    <td>04-2550064</td>
+    <td>054 4932861</td>
+    <td>btd.sales@boscogrp.com</td>
+    <td>btd.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Shanif Mohammad</td>
+    <td>Ras Al-Khaimah</td>
+    <td>BTR</td>
+    <td>Sales</td>
+    <td>07-2212777</td>
+    <td>055 3009200</td>
+    <td>sales.btr@boscogrp.com</td>
+    <td>sales.btr@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Sheheer Kulangara</td>
+    <td>Ajman</td>
+    <td>BTAJ</td>
+    <td>Manager</td>
+    <td>-5420085</td>
+    <td>055 3009076</td>
+    <td>shaheer.kulangara@boscogrp.com</td>
+    <td>btajm.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Tom Jose</td>
+    <td>Fujairah</td>
+    <td>BTF</td>
+    <td>Sales</td>
+    <td>+971 9 2243874</td>
+    <td>+971 55 3009117</td>
+    <td>btf.sales@boscogrp.com</td>
+    <td>btf.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Jayson Thomas</td>
+    <td>Al Ain</td>
+    <td>BTAA</td>
+    <td>Manager</td>
+    <td>03 7610296</td>
+    <td>055 498 4162</td>
+    <td>manager.btalain@boscogrp.com</td>
+    <td>bta.sales@boscogrp.com</td>
+  </tr>
+  <tr>
+    <td>Jayesh Varghese</td>
+    <td>Ras Al-Khaimah</td>
+    <td>BTR</td>
+    <td>Manager</td>
+    <td>07-2212777</td>
+    <td>553009008</td>
+    <td>jayesh.varghese@boscogrp.com</td>
+    <td>sales.btr@boscogrp.com</td>
+  </tr>
+
+          <!-- Add the rest of the rows here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function filterTable() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const branchFilter = document.getElementById("branchFilter").value.toLowerCase();
+      const positionFilter = document.getElementById("positionFilter").value.toLowerCase();
+      const table = document.getElementById("directoryTable");
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName("td");
+        const name = cells[0].innerText.toLowerCase();
+        const branch = cells[1].innerText.toLowerCase();
+        const branchCode = cells[2].innerText.toLowerCase();
+        const position = cells[3].innerText.toLowerCase();
+        const email = cells[6].innerText.toLowerCase();
+
+        let match = 
+          (name.includes(searchInput) || branchCode.includes(searchInput) || email.includes(searchInput)) &&
+          (branchFilter === "" || branch.includes(branchFilter)) &&
+          (positionFilter === "" || position.includes(positionFilter));
+
+        rows[i].style.display = match ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>
